@@ -186,7 +186,7 @@ Resources:
       KeyName: !Ref BastionHostKey
   
   BastionHostGroup:
-  #Created Auto Scaling Group for the BastionHost so even this machine will have no point of failure
+  #Created Auto Scaling Group for the BastionHost so even this machine will have no single point of failure
     Type: AWS::AutoScaling::AutoScalingGroup
     Properties:
       VPCZoneIdentifier:
@@ -200,7 +200,7 @@ Resources:
 Outputs: 
 
     UdagramURL: 
-        Description: A reference to the created VPC
+        Description: Load Balancer URL
         Value: !Join [ "", [ 'http://', !GetAtt UdagramAppLB.DNSName ]]
         # got the GetAtt DNSName from AWS documentation https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html 
         Export:
