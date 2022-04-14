@@ -43,4 +43,3 @@ First:
 
 Second:
  ### aws cloudformation create-stack --stack-name UdagramAppServers --template-body file://UdagramServers.yml --parameters file://UdagramServers-paramters.json   --capabilities "CAPABILITY_IAM" "CAPABILITY_NAMED_IAM"
-
