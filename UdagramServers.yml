@@ -9,7 +9,12 @@ Parameters:
     EnvironmentName:
         Description: An environment name that will be prefixed to resource names
         Type: String
-
+    MyIP:
+        Description: Please enter the IP/32 to SSH from it only to Bastion Host
+        Type: String      
+    BastionHostKey:
+        Description: Please enter the name of Key pair to add to Bastion Host
+        Type: String 
 
 Resources:
 
@@ -26,9 +31,9 @@ Resources:
         ToPort: 80
         CidrIp: 0.0.0.0/0
       SecurityGroupEgress:
-      - IpProtocol: tcp
-        FromPort: 80
-        ToPort: 80
+      - IpProtocol: -1
+        FromPort: -1
+        ToPort: -1
         CidrIp: 0.0.0.0/0
 
   UdagramServerSecGroup:
@@ -44,9 +49,9 @@ Resources:
         ToPort: 80
         CidrIp: 0.0.0.0/0
       SecurityGroupEgress:
-      - IpProtocol: tcp
-        FromPort: 0
-        ToPort: 65535
+      - IpProtocol: -1
+        FromPort: -1
+        ToPort: -1
         CidrIp: 0.0.0.0/0
 
   EC2ReadOnlyS3Role:
@@ -163,12 +168,12 @@ Resources:
       - IpProtocol: tcp
         FromPort: 22
         ToPort: 22
-        CidrIp: 102.189.219.22/32
+        CidrIp: !Ref MyIP
         #Allowed Only to My IP
       SecurityGroupEgress:
-      - IpProtocol: tcp
-        FromPort: 0
-        ToPort: 65535
+      - IpProtocol: -1
+        FromPort: -1
+        ToPort: -1
         CidrIp: 0.0.0.0/0
 
   BastionHostLaunchConfig:
@@ -178,7 +183,7 @@ Resources:
       SecurityGroups:
         - Ref: BastionHostSecurityGroup
       InstanceType: t2.micro
-      KeyName: "BastionHostKey"
+      KeyName: !Ref BastionHostKey
   
   BastionHostGroup:
   #Created Auto Scaling Group for the BastionHost so even this machine will have no point of failure

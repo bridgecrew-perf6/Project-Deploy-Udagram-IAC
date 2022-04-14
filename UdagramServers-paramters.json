@@ -2,5 +2,13 @@
 	{
 		"ParameterKey": "EnvironmentName",
 		"ParameterValue": "UdagramApp"
+	},
+	{
+		"ParameterKey": "MyIP",
+		"ParameterValue": "154.143.78.57/32"
+	},
+	{
+		"ParameterKey": "BastionHostKey",
+		"ParameterValue": "BastionHostKey"
 	}
 ]
