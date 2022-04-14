@@ -85,6 +85,7 @@ Resources:
       SecurityGroups:
       - Ref: UdagramServerSecGroup
       InstanceType: t3.small
+      IamInstanceProfile: !Ref EC2InstanceProfile
       BlockDeviceMappings:
       - DeviceName: "/dev/sdk"
         Ebs:
