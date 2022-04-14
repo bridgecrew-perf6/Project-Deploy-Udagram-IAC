@@ -41,8 +41,8 @@ Security Groups and Roles
 ## To Create the Infra Run The Following Commands
 
 ### First:
-  aws cloudformation create-stack --stack-name UdagramAppNetwork --template-body file://UdagramNetwork.yml --parameters file://UdagramNetwork-Parameters.json
+         aws cloudformation create-stack --stack-name UdagramAppNetwork --template-body file://UdagramNetwork.yml --parameters file://UdagramNetwork-Parameters.json
 
 
 ### Second:
-  aws cloudformation create-stack --stack-name UdagramAppServers --template-body file://UdagramServers.yml --parameters file://UdagramServers-paramters.json   --capabilities "CAPABILITY_IAM" "CAPABILITY_NAMED_IAM"
+        aws cloudformation create-stack --stack-name UdagramAppServers --template-body file://UdagramServers.yml --parameters file://UdagramServers-paramters.json   --capabilities "CAPABILITY_IAM" "CAPABILITY_NAMED_IAM"
